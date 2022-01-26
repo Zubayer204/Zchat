@@ -1,1 +1,1 @@
-web: gunicorn vdchat.wsgi --log-file
+web: gunicorn vdchat.wsgi --log-file error.txt
