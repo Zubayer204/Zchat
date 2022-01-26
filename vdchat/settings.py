@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-toy3^l9bwz8muu0-mhnx%(tjbc%(-ntf4%y^i3qo-)t38ci@$v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zgroupchat.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition

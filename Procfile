@@ -1,0 +1,1 @@
+web: gunicorn vdchat.wsgi --log-file
