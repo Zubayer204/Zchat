@@ -22,11 +22,9 @@ let joinAndDisplayLocalStream = async () => {
         window.open('/', '_self')
     }
 
-    // await client.join(APP_ID, CHANNEL, TOKEN, UID)
-
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
 
-    let member =  await createMember()
+    let member =  await getMyself()
 
     let player = `<div class="video-container" id="user-container-${UID}">
                     <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
@@ -102,20 +100,25 @@ let toggleMic = async (e) => {
     }
 }
 
-let createMember = async () => {
-    let response = await fetch('/create_member/', {
-        method: 'POST',
-        headers: {
-            'content-Type': 'application/json'
-        },
-        body:JSON.stringify({'name': NAME, 'room_name': CHANNEL, 'UID': UID})
-    })
-    let member = await response.json()
-    return member
+// let createMember = async () => {
+//     let response = await fetch('/create_member/', {
+//         method: 'POST',
+//         headers: {
+//             'content-Type': 'application/json'
+//         },
+//         body:JSON.stringify({'name': NAME, 'room_name': CHANNEL, 'UID': UID})
+//     })
+//     let member = await response.json()
+//     return member
+// }
+let getMyself = async () => {
+    let response = await fetch(`/get_member/?UID=${UID}&room_name=${CHANNEL}`)
+    let data = await response.json()
+    return data
 }
 
 let getMember = async (user) => {
-    let response = await fetch(`/get_member/?uid=${user.uid}&room_name=${CHANNEL}`)
+    let response = await fetch(`/get_member/?UID=${user.uid}&room_name=${CHANNEL}`)
     let data = await response.json()
     return data
 }

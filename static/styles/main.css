@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400&family=Neonderthaw&family=Roboto+Mono:wght@100;300&display=swap');
 
 :root{
     --shadow: 0px 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
 }
 
+* {
+    font-family: 'Roboto Mono', monospace;
+}
+
 body{
     background-color: rgba(232, 233, 239, 1);
-    font-family: 'Roboto', sans-serif;
 }
 
 #logo{
     display: block;
-    width: 100px;
+    width: 10em;
     margin: 0 auto;
 }
 
@@ -118,11 +121,13 @@ body{
 }
 
 #welcome-message h1{
+    font-family: 'Neonderthaw', cursive;
     font-size: 36px;
 }
 
 #welcome-message p{
-    font-size: 16px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 22px;
 }
 
 .form-field{
@@ -156,4 +161,62 @@ body{
     #welcome-message h1{
         font-size: 24px;
     }
+}
+
+/* input{
+    font-family: 'Roboto Mono', monospace;
+} */
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    width: 50%;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: rgb(201, 211, 255);
+    /* color: #fff; */
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: rgba(75, 93, 172, 1);
+    color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+  
+  /* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#error_j, #error_c{
+    font-size: 12px;
+    color: rgb(202, 56, 56);
 }

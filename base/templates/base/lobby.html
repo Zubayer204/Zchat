@@ -5,7 +5,8 @@
 <main>
 
     <section id="form-container">
-        <img src="{% static 'images/chat-icon.png' %}" alt="logo" id="logo">
+        <!-- <img src="{% static 'images/chat-icon.png' %}" alt="logo" id="logo"> -->
+        <img src="{% static 'images/zchat_logo.png' %}" alt="logo" id="logo">
 
         <div id="welcome-message">
             <h1>Welcome to ZChat!</h1>
@@ -13,51 +14,58 @@
         </div>
 
         <form id="form">
-            <div class="form-field">
-                <input type="text" name="room" placeholder="Enter a room name..." style='text-transform: uppercase;'>
+
+            <!-- Tab links -->
+            <div class="tab">
+                <button type="button" class="tablinks" onclick="changeTab(event, 'Join')" id="default">Join Room</button>
+                <button type="button" class="tablinks" onclick="changeTab(event, 'Create')">Create Room</button>
             </div>
 
-            <div class="form-field">
-                <input type="text" name="name" placeholder="Enter your name..." style="text-transform: capitalize;">
+            <div id="Join" class="tabcontent">
+                <div class="form-field">
+                    <input type="text" id="j_room" name="room" placeholder="Enter a room name..." style='text-transform: uppercase;' required>
+                </div>
+
+                <div class="form-field">
+                    <input type="text" id="j_name" name="name" placeholder="Enter your name..." style="text-transform: capitalize;" required>
+                </div>
+
+                <div class="form-field">
+                    <input type="password" id="j_password" name="password" placeholder="Enter your password..." required>
+                </div>
+
+                <div class="form-field">
+                    <input type="submit" value="Join Room">
+                </div>
+                <span id="error_j" class="form-field" style="display: none;"></span>
             </div>
 
-            <div class="form-field">
-                <input type="submit" value="Join Stream">
+            <div id="Create" class="tabcontent">
+                <div class="form-field">
+                    <input type="text" id="c_room" name="c_room" placeholder="Enter a room name..." style='text-transform: uppercase;'>
+                </div>
+
+                <div class="form-field">
+                    <input type="text" id="c_name" name="c_name" placeholder="Enter your name..." style="text-transform: capitalize;">
+                </div>
+
+                <div class="form-field">
+                    <input type="password" id="c_password" name="c_password" placeholder="Set a password for room...">
+                </div>
+
+                <div class="form-field">
+                    <input type="submit" value="Create Room">
+                </div>
+                <span id="error_c" class="form-field" style="display: none;"></span>
             </div>
+
+            <input type="hidden" id="action" name="action" value="Create">
+            {% csrf_token %}
         </form>
     </section>
 
 </main>
 
-<script type="text/javascript">
-    let form = document.getElementById("form")
-
-    String.prototype.toCamelCase = function() {
-        return this.replace(/\b(\w)/g, function(match, capture) {
-            return capture.toUpperCase();
-        })
-    }
-
-    let handleSubmit = async (e) => {
-        e.preventDefault()
-        let room = e.target.room.value.toUpperCase()
-        let name = e.target.name.value.toCamelCase()
-
-        let response = await fetch(`/get_token/?channel=${room}`)
-        let data = await response.json()
-
-        let UID = data.uid
-        let token = data.token
-
-        sessionStorage.setItem('UID', UID)
-        sessionStorage.setItem('token', token)
-        sessionStorage.setItem('room', room)
-        sessionStorage.setItem('name', name)
-
-        window.open("/room/", '_self')
-    }
-
-    form.addEventListener('submit', handleSubmit)
-</script>
+<script type="text/javascript" src="{% static 'js/lobby.js' %}"></script>
 
 {% endblock content %}
