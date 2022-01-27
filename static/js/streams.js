@@ -100,17 +100,7 @@ let toggleMic = async (e) => {
     }
 }
 
-// let createMember = async () => {
-//     let response = await fetch('/create_member/', {
-//         method: 'POST',
-//         headers: {
-//             'content-Type': 'application/json'
-//         },
-//         body:JSON.stringify({'name': NAME, 'room_name': CHANNEL, 'UID': UID})
-//     })
-//     let member = await response.json()
-//     return member
-// }
+
 let getMyself = async () => {
     let response = await fetch(`/get_member/?UID=${UID}&room_name=${CHANNEL}`)
     let data = await response.json()
