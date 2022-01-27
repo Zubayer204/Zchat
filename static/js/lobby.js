@@ -91,7 +91,7 @@ let handleSubmit = async (e) => {
             headers: {
                 'content-Type': 'application/json'
             },
-            body:JSON.stringify({'room_name': c_room, 'password': c_password})
+            body:JSON.stringify({'room_name': c_room, 'password': c_password, 'UID': data.uid, 'name': c_name})
         }) 
         let d = await res.json()
         if(d.error){

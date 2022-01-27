@@ -34,18 +34,6 @@ def room(request):
     return render(request, 'base/room.html')
 
 
-@csrf_exempt
-def create_user(request):
-    data = json.loads(request.body)
-
-    member, created = RoomMember.objects.get_or_create(
-        name = data['name'],
-        uid = data['UID'],
-        room_name=data['room_name']
-    )
-    return JsonResponse({'name': data['name']}, safe=False)
-
-
 def get_member(request):
     uid = request.GET.get('UID')
     room_name = request.GET.get('room_name')
@@ -124,6 +112,12 @@ def create_room(request):
     room = Room.objects.create(
         room_name=data['room_name'],
         password=data['password']
+    )
+
+    member = RoomMember.objects.create(
+        name=data['name'],
+        uid=data['UID'],
+        room=room
     )
 
     return JsonResponse({"error": False, "room_id": room.id})
