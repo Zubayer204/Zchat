@@ -120,9 +120,6 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 
-if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
