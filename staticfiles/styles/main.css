@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400&family=Neonderthaw&family=Roboto+Mono:wght@100;300&display=swap');
+
+:root{
+    --shadow: 0px 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+* {
+    font-family: 'Roboto Mono', monospace;
+}
+
+body{
+    background-color: rgba(232, 233, 239, 1);
+}
+
+#logo{
+    display: block;
+    width: 10em;
+    margin: 0 auto;
+}
+
+#form-container {
+    width: 400px;
+    box-shadow: var(--shadow);
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* ---------- ROOM STYLING ----------- */
+
+#room-name-wrapper{
+    text-align: center;
+    font-size: 18px;
+}
+
+#video-streams{
+    display: flex;
+    flex-wrap: wrap;
+    height: 85vh;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.video-container{
+    flex-basis: 500px;
+    flex-grow: 1;
+    max-height: 100%;
+    min-height: 350px;
+    border: 1px solid rgba(75, 95, 172, 1);
+    border-radius: 5px;
+    margin: 2px;
+    background-color: rgba(198, 202, 219, 1);
+    position: relative;
+}
+
+.video-player {
+    height: 100%;
+    width: 100%;
+}
+
+.video-player > *{
+    border-radius: 5px;
+}
+
+.username-wrapper{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+}
+
+@media screen and (max-width:1650px) {
+    .video-container{
+        flex-basis: 300px;
+        min-height: 200px;
+    }
+}
+
+/* --------- Room Styling | Controls-------------- */
+
+#controls-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 1em;
+    position: fixed;
+    bottom: 2.5em;
+}
+
+.control-icon{
+    height: 20px;
+    width: 20px;
+    box-shadow:  var(--shadow);
+    background-color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#leave-btn{
+    background-color: rgba(255, 80, 80, 1);
+}
+
+
+/* ---------- LOBBBY STYLING ----------- */
+
+#welcome-message{
+    text-align: center;
+    margin: 20px;
+
+}
+
+#welcome-message h1{
+    font-family: 'Neonderthaw', cursive;
+    font-size: 36px;
+}
+
+#welcome-message p{
+    font-family: 'Dongle', sans-serif;
+    font-size: 22px;
+}
+
+.form-field{
+    margin: 20px;
+}
+
+.form-field label{
+    font-size: 16px;
+    line-height: 1.7em;
+}
+
+.form-field input{
+    width: 100%;
+    border: 2px solid rgba(198, 202, 219, 1);
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form-field input[type='submit']{
+    background-color: rgba(75, 93, 172, 1);
+    border: none;
+    color: #fff;
+}
+
+@media screen and (max-width:450px) {
+    #form-container{
+        width: 95%;
+    }
+
+    #welcome-message h1{
+        font-size: 24px;
+    }
+}
+
+/* input{
+    font-family: 'Roboto Mono', monospace;
+} */
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    width: 50%;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: rgb(201, 211, 255);
+    /* color: #fff; */
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: rgba(75, 93, 172, 1);
+    color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+  
+  /* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#error_j, #error_c{
+    font-size: 12px;
+    color: rgb(202, 56, 56);
+}
